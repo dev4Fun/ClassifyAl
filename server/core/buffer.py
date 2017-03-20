@@ -1,9 +1,9 @@
 from tornado import gen
 
-from server.conf import PNG_TYPE
 from server.core.predict import predictor
 from server.helpers.image_util import png_to_jpeg
 from server.helpers.thread_pool import use_thread_pool
+from server.settings import PNG_TYPE
 
 
 class ImageBuffer:

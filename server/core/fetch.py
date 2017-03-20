@@ -12,7 +12,6 @@ WORD_ESCAPE_LEN = 4
 
 @gen.coroutine
 def fetch_pic_from_insta(url):
-
     res = yield httpclient.AsyncHTTPClient().fetch(url, validate_cert=False)
 
     @use_thread_pool

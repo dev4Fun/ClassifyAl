@@ -4,8 +4,8 @@ import uuid
 import tornado.web
 from tornado import gen
 
-from server.conf import MAX_IMAGE_UPLOAD_SIZE_BYTES, MAX_IMAGE_UPLOAD_SIZE_MB
 from server.core.buffer import image_buffer
+from server.settings import MAX_IMAGE_UPLOAD_SIZE_BYTES, MAX_IMAGE_UPLOAD_SIZE_MB
 
 VALID_URL_REGEX = re.compile(
     r'^(?:http)s?://'  # http:// or https://
@@ -43,7 +43,8 @@ class BaseRequestHandler(tornado.web.RequestHandler):
             try:
                 predictions = yield image_buffer.wait_for_image_processing(image, self.identifier)
                 return predictions
-            except Exception:
+            except Exception as e:
+                print(e)
                 self.set_status(400)
                 self.finish({"reason": "Unable to process the image. Try using another source"})
 

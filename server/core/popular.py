@@ -1,9 +1,9 @@
 from tornado import gen
 from tornado.queues import Queue
 
-from server.conf import IMAGE_LABELS
 from server.handlers.queue import update_top_5
 from server.helpers.formatter import to_json_result
+from server.settings import configuration
 
 
 class PopularCategories:
@@ -35,7 +35,7 @@ class PopularCategories:
 
         #  update categories total
         for prediction in predictions:
-            label = IMAGE_LABELS[prediction]
+            label = configuration.image_labels[prediction]
             score = new_predictions[0][prediction]
 
             if label in self.categories:

@@ -1,7 +1,7 @@
 from tornado import gen
 
-from server.conf import VALID_IMAGE_TYPES
 from server.handlers.common.handler import BaseRequestHandler
+from server.settings import VALID_IMAGE_TYPES
 
 
 class ImageUploadHandler(BaseRequestHandler):

@@ -2,8 +2,6 @@ import tornado.websocket
 
 from tornado import gen
 
-# from server.core.popular import popular_categories
-
 _clients = set()
 _top_5 = []
 
